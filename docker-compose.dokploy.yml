@@ -1,6 +1,4 @@
-# NOTE: This setup is intended for WHMCS development purposes.
-# IMPORTANT: WHMCS requires a license reset each time the docker container is restarted.
-# DOKPLOY: Ofelia is not used here. Configure the WHMCS cron (php -q /var/www/html/crons/cron.php) 
+# DOKPLOY: Configure the WHMCS cron (php -q /var/www/html/crons/cron.php) 
 # in the Dokploy scheduler for this container.
 # PORT: Ensure you map port 80 in Dokploy to access the Apache web server.
 
@@ -10,8 +8,6 @@ services:
       context: ./whmcs
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "8080:80"
     environment:
       - HTPASSWD_CONTENT=${HTPASSWD_CONTENT:-username:$$apr1$$kqWrWanJ$$vtK3tvkMof1bAZRaaAoM6.}
       - INSTALL_CHIP=${INSTALL_CHIP:-true}

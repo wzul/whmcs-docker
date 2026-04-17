@@ -32,12 +32,18 @@ This repository provides a Docker-based development environment for WHMCS, optim
    - `DB_PASSWORD`: Database password.
 
 3. **Run the environment**:
-   ```bash
-   docker compose up -d
-   ```
+   - **Local Development**:
+     ```bash
+     docker compose up -d
+     ```
+     Access at `http://localhost:8080`.
+   - **Dokploy Deployment**:
+     Use `docker-compose.dokploy.yml`.
+
    *Note: The IonCube Loader is automatically downloaded and configured during the build process.*
 
 ## Dokploy Configuration
+- **Compose File**: Point Dokploy to `docker-compose.dokploy.yml`.
 - **Port Mapping**: Ensure you set the service port to **80** in Dokploy to route traffic to the Apache web server.
 - **Scheduler**: Configure the WHMCS cron in the Dokploy scheduler:
   - **Command**: `php -q /var/www/html/crons/cron.php`

@@ -1,0 +1,39 @@
+# NOTE: This setup is intended for WHMCS development purposes.
+# IMPORTANT: WHMCS requires a license reset each time the docker container is restarted.
+# DOKPLOY: Ofelia is not used here. Configure the WHMCS cron (php -q /var/www/html/crons/cron.php) 
+# in the Dokploy scheduler for this container.
+# PORT: Ensure you map port 80 in Dokploy to access the Apache web server.
+
+services:
+  whmcs_web:
+    build:
+      context: ./whmcs
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - HTPASSWD_CONTENT=${HTPASSWD_CONTENT:-username:$$apr1$$kqWrWanJ$$vtK3tvkMof1bAZRaaAoM6.}
+      - INSTALL_CHIP=${INSTALL_CHIP:-true}
+      - CHIP_BRANCH=${CHIP_BRANCH:-main}
+      - DB_HOST=${DB_HOST:-whmcs_db}
+      - DB_NAME=${DB_NAME:-whmcs}
+      - DB_USER=${DB_USER:-whmcs_user}
+      - DB_PASSWORD=${DB_PASSWORD:-whmcs_password}
+    volumes:
+      - whmcs_data:/var/www/html
+    depends_on:
+      - whmcs_db
+
+  whmcs_db:
+    image: mariadb:11.8
+    restart: unless-stopped
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root_password}
+      - MARIADB_DATABASE=${DB_NAME:-whmcs}
+      - MARIADB_USER=${DB_USER:-whmcs_user}
+      - MARIADB_PASSWORD=${DB_PASSWORD:-whmcs_password}
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  whmcs_data:
+  db_data:

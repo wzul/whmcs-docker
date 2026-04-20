@@ -4,7 +4,7 @@ This workspace is set up for WHMCS development using Docker.
 
 ## Project Overview
 - **Purpose**: WHMCS development.
-- **Stack**: PHP 8.4, Apache, IonCube Loader.
+- **Stack**: PHP 8.3, Apache, IonCube Loader.
 - **Deployment**: Intended for use with Dokploy.
 
 ## Key Conventions

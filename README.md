@@ -1,9 +1,9 @@
 # WHMCS Docker Development Environment
 
-This repository provides a Docker-based development environment for WHMCS, optimized for PHP 8.4 and Apache.
+This repository provides a Docker-based development environment for WHMCS, optimized for PHP 8.3 and Apache.
 
 ## Features
-- **PHP 8.4** with required extensions (`mysqli`, `gd`, `intl`, `soap`, etc.).
+- **PHP 8.3** with required extensions (`mysqli`, `gd`, `intl`, `soap`, etc.).
 - **IonCube Loader** support.
 - **Basic Auth** protection for the entire site (with callback exceptions).
 - **Dokploy Ready**: Designed for deployment on Dokploy.

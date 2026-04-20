@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.3-apache
 
 # Set working directory inside the container
 WORKDIR /var/www/html
@@ -25,7 +25,7 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN curl -fsSL https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip -o /tmp/ioncube.zip \
     && unzip /tmp/ioncube.zip -d /tmp/ \
     && mkdir -p /usr/local/lib/php/extensions/ioncube \
-    && cp /tmp/ioncube/ioncube_loader_lin_8.4.so /usr/local/lib/php/extensions/ioncube/ioncube.so \
+    && cp /tmp/ioncube/ioncube_loader_lin_8.3.so /usr/local/lib/php/extensions/ioncube/ioncube.so \
     && rm -rf /tmp/ioncube /tmp/ioncube.zip
 
 # Create IonCube configuration file

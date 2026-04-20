@@ -31,6 +31,9 @@ RUN curl -fsSL https://downloads.ioncube.com/loader_downloads/ioncube_loaders_li
 # Create IonCube configuration file
 RUN echo "zend_extension=/usr/local/lib/php/extensions/ioncube/ioncube.so" > /usr/local/etc/php/conf.d/00-ioncube.ini
 
+# Disable PHP OPcache
+RUN echo "opcache.enable=0" > /usr/local/etc/php/conf.d/opcache-disable.ini
+
 # Enable Apache rewrite module
 RUN a2enmod rewrite
 

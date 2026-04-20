@@ -45,7 +45,7 @@ RUN echo '<Directory "/var/www/html">' >> /etc/apache2/apache2.conf \
     && echo '    AuthType Basic' >> /etc/apache2/apache2.conf \
     && echo '    AuthName "Restricted Content"' >> /etc/apache2/apache2.conf \
     && echo '    AuthUserFile /var/www/.htpasswd' >> /etc/apache2/apache2.conf \
-    && echo '    SetEnvIf Request_URI "^/modules/gateways/callback/chip\.php$" allow_without_auth' >> /etc/apache2/apache2.conf \
+    && echo '    SetEnvIf Request_URI "^/modules/gateways/callback/chip.*\.php$" allow_without_auth' >> /etc/apache2/apache2.conf \
     && echo '    Order Deny,Allow' >> /etc/apache2/apache2.conf \
     && echo '    Deny from all' >> /etc/apache2/apache2.conf \
     && echo '    Satisfy Any' >> /etc/apache2/apache2.conf \

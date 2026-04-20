@@ -12,6 +12,7 @@ fi
 CHIP_BRANCH=${CHIP_BRANCH:-main}
 if [ "$INSTALL_CHIP" = "true" ]; then
     echo "Downloading CHIP for WHMCS (branch: $CHIP_BRANCH)..."
+    echo "URL: https://github.com/CHIPAsia/chip-for-whmcs/archive/refs/heads/${CHIP_BRANCH}.zip"
     curl -fsSL "https://github.com/CHIPAsia/chip-for-whmcs/archive/refs/heads/${CHIP_BRANCH}.zip" -o /tmp/chip.zip
     unzip -q /tmp/chip.zip -d /tmp/
     

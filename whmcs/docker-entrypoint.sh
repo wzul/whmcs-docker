@@ -9,7 +9,10 @@ if [ -n "$HTPASSWD_CONTENT" ]; then
 fi
 
 # Download and install CHIP for WHMCS if requested
-CHIP_BRANCH=${CHIP_BRANCH:-main}
+if [ -z "$CHIP_BRANCH" ] || [ "$CHIP_BRANCH" = "CHIP_BRANCH" ]; then
+    CHIP_BRANCH="main"
+fi
+
 if [ "$INSTALL_CHIP" = "true" ]; then
     echo "Downloading CHIP for WHMCS (branch: $CHIP_BRANCH)..."
     echo "URL: https://github.com/CHIPAsia/chip-for-whmcs/archive/refs/heads/${CHIP_BRANCH}.zip"
